@@ -10,6 +10,8 @@ import { SidebarComponent } from './componentes/sidebar/sidebar.component';
 import { ContentComponent } from './componentes/content/content.component';
 import { MaterialModule } from './modulos/material.module';
 import { ListadoAlumnosComponent } from './componentes/listado-alumnos/listado-alumnos.component';
+import { AgregarAlumnoComponent } from './componentes/agregar-alumno/agregar-alumno.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,16 @@ import { ListadoAlumnosComponent } from './componentes/listado-alumnos/listado-a
     HeaderComponent,
     SidebarComponent,
     ContentComponent,
-    ListadoAlumnosComponent
+    ListadoAlumnosComponent,
+    AgregarAlumnoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

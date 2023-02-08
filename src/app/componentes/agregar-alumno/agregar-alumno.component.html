@@ -1,0 +1,50 @@
+<form [formGroup]="formAgregarEstudiante" (ngSubmit)="agregarEstudianteNota()">
+  <div class="mb-3">
+    <label for="nombreEstudiante" class="form-label">Nombre</label>
+    <input type="text"
+        class="form-control"
+        id="nombreEstudiante"
+        placeholder="Ingresa el nombre"
+        formControlName="nombre">
+
+      <div *ngIf="formAgregarEstudiante.controls['nombre'].touched && formAgregarEstudiante.controls['nombre'].valid" class="alert alert-success" role="alert">Campo Correcto</div>
+      <div *ngIf="formAgregarEstudiante.controls['nombre'].touched && formAgregarEstudiante.controls['nombre'].errors?.['required']" class="alert alert-danger" role="alert">Campo obligatorio</div>
+      <div *ngIf="formAgregarEstudiante.controls['nombre'].touched && formAgregarEstudiante.controls['nombre'].errors?.['minlength']" class="alert alert-danger" role="alert">Nombre no valido</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="edadEstudiante" class="form-label">Edad</label>
+    <input type="number"
+        class="form-control"
+        id="edadEstudiante"
+        placeholder="Ingresa la edad"
+        formControlName="edad">
+
+        <div *ngIf="formAgregarEstudiante.controls['edad'].touched && formAgregarEstudiante.controls['edad'].valid" class="alert alert-success">Campo Correcto</div>
+        <div *ngIf="formAgregarEstudiante.controls['edad'].touched && formAgregarEstudiante.controls['edad'].errors?.['required']" class="alert alert-danger" role="alert">Campo Obligatorio</div>
+        <div *ngIf="formAgregarEstudiante.controls['edad'].touched && formAgregarEstudiante.controls['edad'].errors?.['min']" class="alert alert-danger" role="alert">Debes ser mayor de 10 años</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="cursoEstudiante" class="form-label">Curso</label>
+    <input type="text"
+        class="form-control"
+        id="cursoEstudiante"
+        placeholder="Ingresa el curso"
+        formControlName="curso">
+
+        <div *ngIf="formAgregarEstudiante.controls['curso'].touched && formAgregarEstudiante.controls['curso'].valid" class="alert alert-success">Campo Correcto</div>
+        <div *ngIf="formAgregarEstudiante.controls['curso'].touched && formAgregarEstudiante.controls['curso'].errors?.['required']" class="alert alert-danger" role="alert">Campo Obligatorio</div>
+        <div *ngIf="formAgregarEstudiante.controls['curso'].touched && formAgregarEstudiante.controls['curso'].errors?.['pattern']" class="alert alert-danger" role="alert">Solo puedes ingresar letras</div>
+  </div>
+
+  <div class="mb-3 form-check">
+    <input type="checkbox"
+        class="form-check-input"
+        id="estudianteActivo"
+        formControlName="activo">
+    <label class="form-check-label" for="estudianteActivo">Estudiante Activo</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Registrar</button>
+</form>

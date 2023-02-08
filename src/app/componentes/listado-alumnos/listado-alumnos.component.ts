@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Estudiante } from 'src/app/interfaces/estudiante';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
@@ -8,7 +8,7 @@ import {MatTableDataSource} from '@angular/material/table';
   templateUrl: './listado-alumnos.component.html',
   styleUrls: ['./listado-alumnos.component.css']
 })
-export class ListadoAlumnosComponent {
+export class ListadoAlumnosComponent implements  AfterViewInit{
 
   estudiantes: Array<Estudiante> = [
     { "nombre": 'David', 'edad': 19, "curso": 'Angular', "activo": true },
@@ -18,11 +18,12 @@ export class ListadoAlumnosComponent {
   ];
 
   dataSource = new MatTableDataSource<Estudiante>(this.estudiantes);
-  displayedColumns: string[] = ['nombre', 'edad', 'curso', 'activo'];
+  displayedColumns: string[] = ['nombre', 'edad', 'curso', 'activo', 'acciones'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(){}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  constructor(){}
 }
