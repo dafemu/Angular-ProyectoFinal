@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Estudiante } from 'src/app/interfaces/estudiante';
 
 @Component({
   selector: 'app-agregar-alumno',
@@ -8,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AgregarAlumnoComponent {
   formAgregarEstudiante: FormGroup;
+  @Output()onNuevoEstudiante: EventEmitter<Estudiante> = new EventEmitter<Estudiante>;
 
   constructor(){
     let soloLetrasRegex:string = '^[a-zA-Z ]*$';
@@ -20,7 +22,14 @@ export class AgregarAlumnoComponent {
     this.formAgregarEstudiante = new FormGroup(controles);
   }
 
-  agregarEstudianteNota(){
+  agregarEstudiante(){
     console.log(this.formAgregarEstudiante);
+    console.log(this.formAgregarEstudiante.value);
+    if(this.formAgregarEstudiante.status === "VALID"){
+      console.log('entro al if');
+      this.onNuevoEstudiante.emit(this.formAgregarEstudiante.value);
+      alert("Alumno agregado correctamente");
+      this.formAgregarEstudiante.reset();
+    }
   }
 }

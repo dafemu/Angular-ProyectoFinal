@@ -1,1 +1,9 @@
-<app-listado-alumnos></app-listado-alumnos>
+<div class="row">
+  <h1>Listado de Alumnos</h1>
+  <app-listado-alumnos [arrayEstudiantes]="estudiantes"></app-listado-alumnos>
+</div>
+
+<div class="row mt-5">
+  <h1>Agregar Nuevo Alumno</h1>
+  <app-agregar-alumno (onNuevoEstudiante)="agregarNuevoEstudiante($event)"></app-agregar-alumno>
+</div>
