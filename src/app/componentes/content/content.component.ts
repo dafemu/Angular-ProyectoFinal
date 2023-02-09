@@ -7,18 +7,17 @@ import { Estudiante } from 'src/app/interfaces/estudiante';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent {
-  estudiantes: Array<any> = [
-    { "nombre": 'David', 'edad': 19, "curso": 'Angular', "activo": true },
-    { "nombre": "Danny", "edad": 20, "curso": 'React', "activo": true },
-    { "nombre": "Camila", "edad": 18, "curso": 'Vue', "activo": true },
-    { "nombre": "Jiss", "edad": 18, "curso": 'Nodejs', "activo": true }
+  alumnos: Array<any> = [
+    { "nombre": 'David', "apellido": 'uno', 'edad': 19, "curso": 'Angular', "activo": true },
+    { "nombre": "Danny", "apellido": 'dos', "edad": 20, "curso": 'React', "activo": true },
+    { "nombre": "Camila", "apellido": 'tres', "edad": 18, "curso": 'Vue', "activo": true },
+    { "nombre": "Jiss", "apellido": 'cuatro', "edad": 18, "curso": 'Nodejs', "activo": true }
   ];
   constructor(){
-    console.log(this.estudiantes);
+    console.log(this.alumnos);
   }
 
-  agregarNuevoEstudiante(event:any){
-    console.log("EVENTO: ", event);
-    this.estudiantes.push(event);
+  agregarNuevoEstudiante(alumno:any){
+    this.alumnos.push(alumno);
   }
 }

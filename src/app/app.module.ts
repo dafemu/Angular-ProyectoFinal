@@ -12,6 +12,8 @@ import { MaterialModule } from './modulos/material.module';
 import { ListadoAlumnosComponent } from './componentes/listado-alumnos/listado-alumnos.component';
 import { AgregarAlumnoComponent } from './componentes/agregar-alumno/agregar-alumno.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
+import { SizeLetrasDirective } from './directives/size-letras.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     ContentComponent,
     ListadoAlumnosComponent,
-    AgregarAlumnoComponent
+    AgregarAlumnoComponent,
+    NombreCompletoPipe,
+    SizeLetrasDirective
   ],
   imports: [
     BrowserModule,

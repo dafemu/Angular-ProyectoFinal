@@ -13,6 +13,17 @@
   </div>
 
   <div class="mb-3">
+    <label for="apellidoEstudiante" class="form-label">Apellido</label>
+    <input type="text"
+        class="form-control"
+        id="apellidoEstudiante"
+        placeholder="Ingresa el apellido"
+        formControlName="apellido">
+      <div *ngIf="formAgregarEstudiante.controls['apellido'].touched && formAgregarEstudiante.controls['apellido'].valid" class="alert alert-success" role="alert">Campo Correcto</div>
+      <div *ngIf="formAgregarEstudiante.controls['apellido'].touched && formAgregarEstudiante.controls['apellido'].errors?.['required']" class="alert alert-danger" role="alert">Campo obligatorio</div>
+  </div>
+
+  <div class="mb-3">
     <label for="edadEstudiante" class="form-label">Edad</label>
     <input type="number"
         class="form-control"

@@ -10,7 +10,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class ListadoAlumnosComponent implements  AfterViewInit, OnInit{
 
-  @Input()arrayEstudiantes!: Array<Estudiante>;
+  @Input()alumnos!: Array<Estudiante>;
 
   dataSource!: MatTableDataSource<Estudiante>;
   displayedColumns: string[] = ['nombre', 'edad', 'curso', 'activo', 'acciones'];
@@ -23,6 +23,6 @@ export class ListadoAlumnosComponent implements  AfterViewInit, OnInit{
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Estudiante>(this.arrayEstudiantes);
+    this.dataSource = new MatTableDataSource<Estudiante>(this.alumnos);
   }
 }

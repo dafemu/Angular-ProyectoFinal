@@ -15,6 +15,7 @@ export class AgregarAlumnoComponent {
     let soloLetrasRegex:string = '^[a-zA-Z ]*$';
     let controles: any = {
       nombre: new FormControl('',[Validators.required, Validators.minLength(3)]),
+      apellido: new FormControl('',[Validators.required]),
       edad: new FormControl('',[Validators.required, Validators.min(15)]),
       curso: new FormControl('',[Validators.required, Validators.pattern(soloLetrasRegex)]),
       activo: new FormControl(false, []),
@@ -26,7 +27,6 @@ export class AgregarAlumnoComponent {
     console.log(this.formAgregarEstudiante);
     console.log(this.formAgregarEstudiante.value);
     if(this.formAgregarEstudiante.status === "VALID"){
-      console.log('entro al if');
       this.onNuevoEstudiante.emit(this.formAgregarEstudiante.value);
       alert("Alumno agregado correctamente");
       this.formAgregarEstudiante.reset();
