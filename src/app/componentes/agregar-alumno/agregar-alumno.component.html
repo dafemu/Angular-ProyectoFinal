@@ -1,61 +1,61 @@
-<form [formGroup]="formAgregarEstudiante" (ngSubmit)="agregarEstudiante()">
+<form [formGroup]="formAgregarAlumno" (ngSubmit)="agregarAlumno()">
   <div class="mb-3">
-    <label for="nombreEstudiante" class="form-label">Nombre</label>
+    <label for="nombreAlumno" class="form-label">Nombre</label>
     <input type="text"
         class="form-control"
-        id="nombreEstudiante"
+        id="nombreAlumno"
         placeholder="Ingresa el nombre"
         formControlName="nombre">
 
-      <div *ngIf="formAgregarEstudiante.controls['nombre'].touched && formAgregarEstudiante.controls['nombre'].valid" class="alert alert-success" role="alert">Campo Correcto</div>
-      <div *ngIf="formAgregarEstudiante.controls['nombre'].touched && formAgregarEstudiante.controls['nombre'].errors?.['required']" class="alert alert-danger" role="alert">Campo obligatorio</div>
-      <div *ngIf="formAgregarEstudiante.controls['nombre'].touched && formAgregarEstudiante.controls['nombre'].errors?.['minlength']" class="alert alert-danger" role="alert">Nombre no valido</div>
+      <div *ngIf="formAgregarAlumno.controls['nombre'].touched && formAgregarAlumno.controls['nombre'].valid" class="alert alert-success" role="alert">Campo Correcto</div>
+      <div *ngIf="formAgregarAlumno.controls['nombre'].touched && formAgregarAlumno.controls['nombre'].errors?.['required']" class="alert alert-danger" role="alert">Campo obligatorio</div>
+      <div *ngIf="formAgregarAlumno.controls['nombre'].touched && formAgregarAlumno.controls['nombre'].errors?.['minlength']" class="alert alert-danger" role="alert">Nombre no valido</div>
   </div>
 
   <div class="mb-3">
-    <label for="apellidoEstudiante" class="form-label">Apellido</label>
+    <label for="apellidoAlumno" class="form-label">Apellido</label>
     <input type="text"
         class="form-control"
-        id="apellidoEstudiante"
+        id="apellidoAlumno"
         placeholder="Ingresa el apellido"
         formControlName="apellido">
-      <div *ngIf="formAgregarEstudiante.controls['apellido'].touched && formAgregarEstudiante.controls['apellido'].valid" class="alert alert-success" role="alert">Campo Correcto</div>
-      <div *ngIf="formAgregarEstudiante.controls['apellido'].touched && formAgregarEstudiante.controls['apellido'].errors?.['required']" class="alert alert-danger" role="alert">Campo obligatorio</div>
+      <div *ngIf="formAgregarAlumno.controls['apellido'].touched && formAgregarAlumno.controls['apellido'].valid" class="alert alert-success" role="alert">Campo Correcto</div>
+      <div *ngIf="formAgregarAlumno.controls['apellido'].touched && formAgregarAlumno.controls['apellido'].errors?.['required']" class="alert alert-danger" role="alert">Campo obligatorio</div>
   </div>
 
   <div class="mb-3">
-    <label for="edadEstudiante" class="form-label">Edad</label>
+    <label for="edadAlumno" class="form-label">Edad</label>
     <input type="number"
         class="form-control"
-        id="edadEstudiante"
+        id="edadAlumno"
         placeholder="Ingresa la edad"
         formControlName="edad">
 
-        <div *ngIf="formAgregarEstudiante.controls['edad'].touched && formAgregarEstudiante.controls['edad'].valid" class="alert alert-success">Campo Correcto</div>
-        <div *ngIf="formAgregarEstudiante.controls['edad'].touched && formAgregarEstudiante.controls['edad'].errors?.['required']" class="alert alert-danger" role="alert">Campo Obligatorio</div>
-        <div *ngIf="formAgregarEstudiante.controls['edad'].touched && formAgregarEstudiante.controls['edad'].errors?.['min']" class="alert alert-danger" role="alert">Debes ser mayor de 10 años</div>
+        <div *ngIf="formAgregarAlumno.controls['edad'].touched && formAgregarAlumno.controls['edad'].valid" class="alert alert-success">Campo Correcto</div>
+        <div *ngIf="formAgregarAlumno.controls['edad'].touched && formAgregarAlumno.controls['edad'].errors?.['required']" class="alert alert-danger" role="alert">Campo Obligatorio</div>
+        <div *ngIf="formAgregarAlumno.controls['edad'].touched && formAgregarAlumno.controls['edad'].errors?.['min']" class="alert alert-danger" role="alert">Debes ser mayor de 10 años</div>
   </div>
 
   <div class="mb-3">
-    <label for="cursoEstudiante" class="form-label">Curso</label>
+    <label for="cursoAlumno" class="form-label">Curso</label>
     <input type="text"
         class="form-control"
-        id="cursoEstudiante"
+        id="cursoAlumno"
         placeholder="Ingresa el curso"
         formControlName="curso">
 
-        <div *ngIf="formAgregarEstudiante.controls['curso'].touched && formAgregarEstudiante.controls['curso'].valid" class="alert alert-success">Campo Correcto</div>
-        <div *ngIf="formAgregarEstudiante.controls['curso'].touched && formAgregarEstudiante.controls['curso'].errors?.['required']" class="alert alert-danger" role="alert">Campo Obligatorio</div>
-        <div *ngIf="formAgregarEstudiante.controls['curso'].touched && formAgregarEstudiante.controls['curso'].errors?.['pattern']" class="alert alert-danger" role="alert">Solo puedes ingresar letras</div>
+        <div *ngIf="formAgregarAlumno.controls['curso'].touched && formAgregarAlumno.controls['curso'].valid" class="alert alert-success">Campo Correcto</div>
+        <div *ngIf="formAgregarAlumno.controls['curso'].touched && formAgregarAlumno.controls['curso'].errors?.['required']" class="alert alert-danger" role="alert">Campo Obligatorio</div>
+        <div *ngIf="formAgregarAlumno.controls['curso'].touched && formAgregarAlumno.controls['curso'].errors?.['pattern']" class="alert alert-danger" role="alert">Solo puedes ingresar letras</div>
   </div>
 
   <div class="mb-3 form-check">
     <input type="checkbox"
         class="form-check-input"
-        id="estudianteActivo"
+        id="AlumnoActivo"
         formControlName="activo">
-    <label class="form-check-label" for="estudianteActivo">Estudiante Activo</label>
+    <label class="form-check-label" for="AlumnoActivo">Alumno Activo</label>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="formAgregarEstudiante.invalid">Registrar</button>
+  <button type="submit" class="btn btn-primary" [disabled]="formAgregarAlumno.invalid">Registrar</button>
 </form>
