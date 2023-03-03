@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Alumno } from 'src/app/interfaces/alumno';
+import { Alumno } from 'src/app/alumnos/interfaces/alumno';
 
 @Component({
   selector: 'app-agregar-alumno',

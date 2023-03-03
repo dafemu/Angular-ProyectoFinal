@@ -1,5 +1,5 @@
 import { Component, ViewChild, AfterViewInit, Input, OnInit, OnDestroy } from '@angular/core';
-import { Alumno } from 'src/app/interfaces/alumno';
+import { Alumno } from 'src/app/alumnos/interfaces/alumno';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { BehaviorSubject, Subscription } from 'rxjs';

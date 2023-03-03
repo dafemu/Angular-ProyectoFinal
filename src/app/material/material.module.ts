@@ -7,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [],
@@ -18,6 +19,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
+    MatTabsModule,
   ],
   exports:[
     MatToolbarModule,
@@ -26,7 +28,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatButtonModule,
     MatListModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule { }
