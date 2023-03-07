@@ -4,6 +4,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { AlumnosService } from '../../servicios/alumnos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado-alumnos',
@@ -18,10 +19,10 @@ export class ListadoAlumnosComponent implements  AfterViewInit, OnInit, OnDestro
   subscripcion!: Subscription;
 
   dataSource!: MatTableDataSource<Alumno>;
-  displayedColumns: string[] = ['nombre', 'edad', 'curso', 'activo', 'acciones'];
+  displayedColumns: string[] = ['id','nombre', 'edad', 'curso', 'activo', 'acciones'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private alumnosService:AlumnosService){
+  constructor(private alumnosService:AlumnosService, private router: Router){
     this.alumnos$ = new BehaviorSubject(this.alumnos);
   }
 
@@ -35,6 +36,16 @@ export class ListadoAlumnosComponent implements  AfterViewInit, OnInit, OnDestro
       .subscribe((alumnos:Alumno[])=>{
         this.dataSource.data = alumnos;
       });
+  }
+
+  redirEditarAlumno(element:any){
+    console.log(element);
+    this.router.navigate(['alumnos/editar', element]);
+  }
+
+  eliminarAlumno(element:any){
+    console.log(element);
+    this.alumnosService.eliminarAlumno(element);
   }
 
   ngOnDestroy(): void {

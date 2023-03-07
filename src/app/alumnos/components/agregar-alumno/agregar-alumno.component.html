@@ -1,5 +1,17 @@
 <form [formGroup]="formAgregarAlumno" (ngSubmit)="agregarAlumno()">
   <div class="mb-3">
+    <label for="IdAlumno" class="form-label">ID</label>
+    <input type="text"
+        class="form-control"
+        id="IdAlumno"
+        placeholder="Ingresa tu identificacion"
+        formControlName="id">
+
+      <div *ngIf="formAgregarAlumno.controls['id'].touched && formAgregarAlumno.controls['id'].valid" class="alert alert-success" role="alert">Campo Correcto</div>
+      <div *ngIf="formAgregarAlumno.controls['id'].touched && formAgregarAlumno.controls['id'].errors?.['required']" class="alert alert-danger" role="alert">Campo obligatorio</div>
+  </div>
+
+  <div class="mb-3">
     <label for="nombreAlumno" class="form-label">Nombre</label>
     <input type="text"
         class="form-control"

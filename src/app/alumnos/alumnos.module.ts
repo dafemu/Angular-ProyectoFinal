@@ -4,12 +4,14 @@ import { ListadoAlumnosComponent } from './components/listado-alumnos/listado-al
 import { AgregarAlumnoComponent } from './components/agregar-alumno/agregar-alumno.component';
 import { SharedModule } from "../shared/shared.module";
 import { AlumnosRoutingModule } from './alumnos-routing.module';
+import { EditarAlumnoComponent } from './components/editar-alumno/editar-alumno.component';
 
 
 @NgModule({
     declarations: [
         ListadoAlumnosComponent,
         AgregarAlumnoComponent,
+        EditarAlumnoComponent,
     ],
     exports: [
         ListadoAlumnosComponent,

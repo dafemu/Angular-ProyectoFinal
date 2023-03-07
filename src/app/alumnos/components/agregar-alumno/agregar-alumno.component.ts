@@ -14,6 +14,7 @@ export class AgregarAlumnoComponent {
   constructor(){
     let soloLetrasRegex:string = '^[a-zA-Z ]*$';
     let controles: any = {
+      id: new FormControl('', [Validators.required]),
       nombre: new FormControl('',[Validators.required, Validators.minLength(3)]),
       apellido: new FormControl('',[Validators.required]),
       edad: new FormControl('',[Validators.required, Validators.min(15)]),
