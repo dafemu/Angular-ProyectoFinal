@@ -1,7 +1,25 @@
-<div class="container-fluid">
-  <div class="row">
-    <app-header class="col-12"></app-header>
-    <app-sidebar class="col-12"></app-sidebar>
-    <app-footer class="col-12"></app-footer>
-  </div>
-</div>
+<app-header class="col-12"></app-header>
+
+<mat-sidenav-container class="content">
+  <mat-sidenav mode="side" opened>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <a mat-button routerLink="alumnos/listar">Alumnos</a>
+      </mat-list-item>
+
+      <mat-list-item roleåå="listitem">
+        <a mat-button routerLink="profesores/listar" disabled>Profesores</a>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <a mat-button routerLink="cursos/listar">Cursos</a>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<app-footer class="col-12"></app-footer>

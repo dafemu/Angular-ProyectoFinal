@@ -5,7 +5,7 @@ import { AgregarAlumnoComponent } from './components/agregar-alumno/agregar-alum
 import { EditarAlumnoComponent } from './components/editar-alumno/editar-alumno.component';
 
 const routes: Routes = [
-  { path:'alumnos', children: [
+  { path:'', children: [
       { path: 'listar', component: ListadoAlumnosComponent },
       { path: 'agregar', component: AgregarAlumnoComponent },
       { path: 'editar', component:  EditarAlumnoComponent },

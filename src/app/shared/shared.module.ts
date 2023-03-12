@@ -4,9 +4,6 @@ import { NombreCompletoPipe } from './pipes/nombre-completo.pipe';
 import { SizeLetrasDirective } from './directives/size-letras.directive';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-
 @NgModule({
   declarations: [
     NombreCompletoPipe,
@@ -17,17 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
   ],
   exports:[
+    CommonModule,
     NombreCompletoPipe,
     SizeLetrasDirective,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    HttpClientModule
   ]
 })
 export class SharedModule { }

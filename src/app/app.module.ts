@@ -3,12 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AlumnosModule } from './alumnos/alumnos.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-import { CursosModule } from './cursos/cursos.module';
-import { ProfesoresModule } from './profesores/profesores.module';
-import { AutenticacionModule } from './autenticacion/autenticacion.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,12 +14,9 @@ import { AutenticacionModule } from './autenticacion/autenticacion.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlumnosModule,
     SharedModule,
-    CursosModule,
-    ProfesoresModule,
-    AutenticacionModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
