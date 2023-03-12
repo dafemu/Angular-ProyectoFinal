@@ -19,7 +19,8 @@ import { SharedModule } from '../shared/shared.module';
     CursosRoutingModule,
     SharedModule
   ],
-  exports: [AgregarCursoComponent,
+  exports: [
+    AgregarCursoComponent,
     EditarCursoComponent,
     ListarCursosComponent,
     CursosRoutingModule,

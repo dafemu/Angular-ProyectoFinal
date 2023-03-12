@@ -14,15 +14,15 @@ import { EditarAlumnoComponent } from './components/editar-alumno/editar-alumno.
         EditarAlumnoComponent,
     ],
     exports: [
-        ListadoAlumnosComponent,
-        AgregarAlumnoComponent,
-        AlumnosRoutingModule
+      ListadoAlumnosComponent,
+      AgregarAlumnoComponent,
+      AlumnosRoutingModule
     ],
     providers: [],
     imports: [
-        CommonModule,
-        SharedModule,
-        AlumnosRoutingModule,
+      CommonModule,
+      SharedModule,
+      AlumnosRoutingModule,
     ]
 })
 export class AlumnosModule { }
