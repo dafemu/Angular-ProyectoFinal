@@ -7,6 +7,7 @@ import { ContentComponent } from './components/content/content.component';
 import { AlumnosModule } from '../alumnos/alumnos.module';
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -20,13 +21,15 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     AlumnosModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   exports:[
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
     ContentComponent,
+    HttpClientModule,
   ]
 })
 export class CoreModule { }

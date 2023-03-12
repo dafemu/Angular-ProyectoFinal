@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Alumno } from 'src/app/alumnos/interfaces/alumno';
-import { AlumnosService } from '../../servicios/alumnos.service';
+import { AlumnosService } from '../../services/alumnos.service';
 
 @Component({
   selector: 'app-agregar-alumno',

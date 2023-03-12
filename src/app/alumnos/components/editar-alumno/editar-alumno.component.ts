@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlumnosService } from '../../servicios/alumnos.service';
+import { AlumnosService } from '../../services/alumnos.service';
 
 @Component({
   selector: 'app-editar-alumno',

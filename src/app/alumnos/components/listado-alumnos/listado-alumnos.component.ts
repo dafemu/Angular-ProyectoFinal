@@ -3,7 +3,7 @@ import { Alumno } from 'src/app/alumnos/interfaces/alumno';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { BehaviorSubject, Subscription } from 'rxjs';
-import { AlumnosService } from '../../servicios/alumnos.service';
+import { AlumnosService } from '../../services/alumnos.service';
 import { Router } from '@angular/router';
 
 @Component({
