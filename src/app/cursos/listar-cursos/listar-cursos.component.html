@@ -15,15 +15,17 @@
           </mat-card-content>
 
           <mat-card-actions align="end">
-              <ng-container >
+              <ng-container *ngIf="sesion$ | async as sesion">
                   <button mat-raised-button
                     color="primary"
-                    (click)="abrirDialog(curso)">
+                    (click)="abrirDialog(curso)"
+                    *ngIf="sesion.usuarioActivo?.esAdmin">
                     Editar
                   </button>
                   <button mat-button
                     color="warn"
-                    (click)="eliminarCurso(curso)">
+                    (click)="eliminarCurso(curso)"
+                    *ngIf="sesion.usuarioActivo?.esAdmin">
                     Eliminar
                   </button>
               </ng-container>

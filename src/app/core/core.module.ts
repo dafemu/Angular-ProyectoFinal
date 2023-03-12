@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SharedModule } from '../shared/shared.module';
 import { NoEncontradoComponent } from './components/no-encontrado/no-encontrado.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AutenticacionModule } from '../autenticacion/autenticacion.module';
 
 @NgModule({
   declarations: [

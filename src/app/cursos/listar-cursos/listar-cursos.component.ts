@@ -4,6 +4,8 @@ import { CursosService } from '../services/cursos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarCursoComponent } from '../editar-curso/editar-curso.component';
 import { Observable } from 'rxjs';
+import { Sesion } from 'src/app/core/models/sesion';
+import { SesionService } from 'src/app/core/services/sesion.service';
 
 @Component({
   selector: 'app-listar-cursos',
@@ -14,14 +16,17 @@ export class ListarCursosComponent {
 
   cursos!: Curso[];
   cursos$!:Observable<Curso[]>;
+  sesion$!: Observable<Sesion>
 
   constructor(
     private cursosService: CursosService,
     private dialog: MatDialog,
+    private sesion: SesionService,
   ){}
 
   ngOnInit(): void {
     this.cursos$ = this.cursosService.obtenerCursos();
+    this.sesion$ = this.sesion.obtenerSesion();
   }
 
   abrirDialog(curso: Curso){
