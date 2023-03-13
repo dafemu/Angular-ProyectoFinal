@@ -26,10 +26,7 @@ export class AgregarAlumnoComponent {
   }
 
   agregarAlumno(){
-    // console.log(this.formAgregarAlumno);
-    // console.log(this.formAgregarAlumno.value);
     if(this.formAgregarAlumno.status === "VALID"){
-      // this.onNuevoAlumno.emit(this.formAgregarAlumno.value);
       this.alumnosService.agregarAlumno(this.formAgregarAlumno.value)
       this.formAgregarAlumno.reset();
     }

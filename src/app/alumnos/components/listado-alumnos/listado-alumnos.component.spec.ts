@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from 'src/app/core/core.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 import { ListadoAlumnosComponent } from './listado-alumnos.component';
 
@@ -8,7 +11,12 @@ describe('ListadoAlumnosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListadoAlumnosComponent ]
+      declarations: [ ListadoAlumnosComponent ],
+      imports: [
+        SharedModule,
+        CoreModule,
+        BrowserAnimationsModule
+      ]
     })
     .compileComponents();
 
