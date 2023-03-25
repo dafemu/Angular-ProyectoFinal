@@ -20,6 +20,11 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./autenticacion/autenticacion.module').then((modulo) => modulo.AutenticacionModule)
   },
+  {
+    path:'profesores',
+    loadChildren: () => import('./profesores/profesores.module').then((module) => module.ProfesoresModule),
+    canLoad: [SesionGuard],
+  },
   { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   { path:'**', component: NoEncontradoComponent }
 ];

@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Editar Profesor - {{ profesor.nombre }}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="formularioProfesor" (ngSubmit)="editarProfesor()">
+        <div class="row">
+            <mat-form-field class="col-md-6">
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+                <mat-label>correo</mat-label>
+                <input matInput formControlName="correo">
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+              <mat-label>Cursos</mat-label>
+              <mat-select formControlName="cursos">
+                <mat-option *ngFor="let curso of cursos$ | async" [value]="curso">{{ curso.nombre }}</mat-option>
+              </mat-select>
+          </mat-form-field>
+
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions align="end">
+    <button matDialogClose mat-raised-button color="accent">Cerrar</button>
+    <button mat-raised-button color="primary" (click)="editarProfesor()">Editar</button>
+</div>
