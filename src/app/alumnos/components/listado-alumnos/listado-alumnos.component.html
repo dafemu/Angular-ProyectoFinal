@@ -58,3 +58,9 @@
                  showFirstLastButtons>
   </mat-paginator>
 </div>
+<hr>
+<ng-container *ngIf="sesion$ | async as sesion">
+  <div *ngIf="sesion.usuarioActivo?.esAdmin">
+    <app-agregar-alumno></app-agregar-alumno>
+  </div>
+</ng-container>
