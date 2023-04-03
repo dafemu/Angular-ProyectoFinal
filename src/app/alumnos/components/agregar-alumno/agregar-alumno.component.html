@@ -9,6 +9,8 @@
 
       <div *ngIf="formAgregarAlumno.controls['id'].touched && formAgregarAlumno.controls['id'].valid" class="alert alert-success" role="alert">Campo Correcto</div>
       <div *ngIf="formAgregarAlumno.controls['id'].touched && formAgregarAlumno.controls['id'].errors?.['required']" class="alert alert-danger" role="alert">Campo obligatorio</div>
+      <div *ngIf="formAgregarAlumno.controls['id'].touched && formAgregarAlumno.controls['id'].errors?.['pattern']" class="alert alert-danger" role="alert">Solo puedes ingresar numeros</div>
+
   </div>
 
   <div class="mb-3">
@@ -49,16 +51,17 @@
   </div>
 
   <div class="mb-3">
-    <label for="cursoAlumno" class="form-label">Curso</label>
-    <input type="text"
+      <label class="form-label" for="dropdown">Selecciona un Curso:</label>
+      <select formControlName="curso"
         class="form-control"
-        id="cursoAlumno"
-        placeholder="Ingresa el curso"
-        formControlName="curso">
+        id="dropdown"
+        [(ngModel)]="opcionSeleccionada"
+        name="curso">
+        <option *ngFor="let curso of cursos$ | async" [value]="curso.nombre">{{ curso.nombre }}</option>
+      </select>
 
-        <div *ngIf="formAgregarAlumno.controls['curso'].touched && formAgregarAlumno.controls['curso'].valid" class="alert alert-success">Campo Correcto</div>
-        <div *ngIf="formAgregarAlumno.controls['curso'].touched && formAgregarAlumno.controls['curso'].errors?.['required']" class="alert alert-danger" role="alert">Campo Obligatorio</div>
-        <div *ngIf="formAgregarAlumno.controls['curso'].touched && formAgregarAlumno.controls['curso'].errors?.['pattern']" class="alert alert-danger" role="alert">Solo puedes ingresar letras</div>
+      <div *ngIf="formAgregarAlumno.controls['curso'].touched && formAgregarAlumno.controls['curso'].valid" class="alert alert-success">Campo Correcto</div>
+      <div *ngIf="formAgregarAlumno.controls['curso'].touched && formAgregarAlumno.controls['curso'].errors?.['required']" class="alert alert-danger" role="alert">Campo Obligatorio</div>
   </div>
 
   <div class="mb-3 form-check">

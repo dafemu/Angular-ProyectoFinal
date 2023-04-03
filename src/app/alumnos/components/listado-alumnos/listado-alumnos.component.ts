@@ -14,9 +14,6 @@ import { SesionService } from 'src/app/core/services/sesion.service';
   styleUrls: ['./listado-alumnos.component.css']
 })
 export class ListadoAlumnosComponent implements  AfterViewInit, OnInit, OnDestroy{
-
-  @Input()alumnos!: Alumno[];
-  private alumnos$!: BehaviorSubject<Alumno[]>;
   sesion$!: Observable<Sesion>
 
   subscripcion!: Subscription;
@@ -29,9 +26,7 @@ export class ListadoAlumnosComponent implements  AfterViewInit, OnInit, OnDestro
     private alumnosService:AlumnosService,
     private router: Router,
     private sesion: SesionService,
-  ){
-    this.alumnos$ = new BehaviorSubject(this.alumnos);
-  }
+  ){ }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -43,17 +38,26 @@ export class ListadoAlumnosComponent implements  AfterViewInit, OnInit, OnDestro
       .subscribe((alumnos:Alumno[])=>{
         this.dataSource.data = alumnos;
       });
-      this.sesion$ = this.sesion.obtenerSesion();
+    this.sesion$ = this.sesion.obtenerSesion();
   }
 
-  redirEditarAlumno(element:any){
-    console.log(element);
-    this.router.navigate(['alumnos/editar', element]);
+  redirEditarAlumno(alumno:Alumno){
+    this.router.navigate(['alumnos/editar', alumno]);
   }
 
-  eliminarAlumno(element:any){
-    console.log(element);
-    this.alumnosService.eliminarAlumno(element);
+  recibirNuevoAlumno(alumno:Alumno){
+    this.dataSource.data = [...this.dataSource.data, alumno];
+  }
+
+  eliminarAlumno(alumnoDelete:Alumno){
+    this.alumnosService.eliminarAlumno(alumnoDelete)
+      .subscribe((alumno: Alumno) => {
+        alert(`${alumno.nombre} eliminado`);
+        this.alumnosService.obtenerAlumnos()
+          .subscribe((alumnos:Alumno[])=>{
+            this.dataSource.data = alumnos;
+          });
+      });
   }
 
   ngOnDestroy(): void {

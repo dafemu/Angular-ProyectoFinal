@@ -12,9 +12,37 @@
     }
   ],
   "alumnos": [
-    { "id": "12345", "nombre": "David", "apellido": "uno", "edad": 19, "curso": "Angular", "activo": true },
-    { "id": "23456", "nombre": "Danny", "apellido": "dos", "edad": 20, "curso": "React", "activo": true },
-    { "id": "34567", "nombre": "Camila", "apellido": "tres", "edad": 18, "curso": "Vue", "activo": true },
-    { "id": "45678", "nombre": "Jiss", "apellido": "cuatro", "edad": 18, "curso": "Nodejs", "activo": true }
+    {
+      "id": "12345",
+      "nombre": "David",
+      "apellido": "uno",
+      "edad": 19,
+      "curso": "Angular",
+      "activo": true
+    },
+    {
+      "id": "34567",
+      "nombre": "Camila",
+      "apellido": "tres",
+      "edad": 18,
+      "curso": "Vue",
+      "activo": true
+    },
+    {
+      "id": "45678",
+      "nombre": "Jiss",
+      "apellido": "cuatro",
+      "edad": 18,
+      "curso": "Nodejs",
+      "activo": true
+    },
+    {
+      "id": "5555",
+      "nombre": "Jaun",
+      "apellido": "NAHSS",
+      "edad": 34,
+      "curso": "React",
+      "activo": false
+    }
   ]
 }

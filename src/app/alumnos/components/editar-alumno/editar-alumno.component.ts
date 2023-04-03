@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnosService } from '../../services/alumnos.service';
+import { Alumno } from '../../interfaces/alumno';
 
 @Component({
   selector: 'app-editar-alumno',
@@ -12,9 +13,10 @@ export class EditarAlumnoComponent implements OnInit {
 
   formularioEditarAlumno!: FormGroup;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private alumnosService: AlumnosService){
-
-  }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private alumnosService: AlumnosService){ }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
@@ -39,8 +41,9 @@ export class EditarAlumnoComponent implements OnInit {
       activo: this.formularioEditarAlumno.value.activo,
     };
 
-    this.alumnosService.editarAlumno(alumno);
-    this.router.navigate(['alumnos/listar']);
+    this.alumnosService.editarAlumno(alumno).subscribe((alumno:Alumno) => {
+      this.router.navigate(['alumnos/listar']);
+    });
   }
 
 }
