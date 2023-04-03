@@ -33,4 +33,12 @@
         </mat-card>
     </div>
   </div>
+  <div class="row" *ngIf="sesion$ | async as sesion">
+    <div class="col-12 d-flex flex-column align-items-center" *ngIf="sesion.usuarioActivo?.esAdmin">
+      <h2>Agrega un nuevo curso</h2>
+      <button mat-fab color="primary" (click)="redirigirAgregarCurso()">
+        <mat-icon>plus_one</mat-icon>
+      </button>
+    </div>
+  </div>
 </div>

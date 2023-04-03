@@ -1,1 +1,35 @@
-<p>agregar-profesor works!</p>
+<div class="container">
+  <form [formGroup]="formularioProfesor" (ngSubmit)="agregarProfesor()">
+      <div class="row">
+
+        <mat-form-field class="col-md-6">
+            <mat-label>Id</mat-label>
+            <input matInput formControlName="id">
+        </mat-form-field>
+
+          <mat-form-field class="col-md-6">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre">
+          </mat-form-field>
+
+          <mat-form-field class="col-md-6">
+              <mat-label>Correo</mat-label>
+              <input matInput formControlName="correo">
+          </mat-form-field>
+
+          <mat-form-field class="col-md-6">
+              <mat-label>Curso</mat-label>
+              <mat-select formControlName="cursos">
+                  <mat-option *ngFor="let curso of cursos$ | async" [value]="curso">{{ curso.nombre }}</mat-option>
+              </mat-select>
+          </mat-form-field>
+
+          <div class="col-md-6">
+              <button mat-raised-button
+               color="primary"
+               type="submit"
+               [disabled]="formularioProfesor.invalid">Agregar</button>
+          </div>
+      </div>
+  </form>
+</div>

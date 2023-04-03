@@ -1,5 +1,8 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
+<ng-container *ngIf="sesion$ | async as sesion">
+  <app-toolbar *ngIf="sesion.usuarioActivo?.esAdmin"></app-toolbar>
+</ng-container>
 
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 text-center">
   <!-- id Column -->
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> No. </th>
@@ -18,30 +21,19 @@
     <td mat-cell *matCellDef="let profesor"> {{profesor.correo}} </td>
   </ng-container>
 
-  <!-- Cursos Column -->
-  <ng-container matColumnDef="cursos">
-    <th mat-header-cell *matHeaderCellDef> Cursos </th>
-    <td mat-cell *matCellDef="let profesor">
-      <button mat-button [matMenuTriggerFor]="menu">Ver Cursos</button>
-      <mat-menu #menu="matMenu">
-        <button *ngFor="let cursoP of cursosProfesor" mat-menu-item>{{cursoP.nombre}}</button>
-      </mat-menu>
-    </td>
-  </ng-container>
-
    <!-- Acciones Column -->
-   <ng-container matColumnDef="acciones">
+   <ng-container matColumnDef="acciones"  *ngIf="sesion$ | async as sesion">
     <th mat-header-cell *matHeaderCellDef> Acciones </th>
     <td mat-cell *matCellDef="let profesor">
-
       <button class="m-2"
           mat-stroked-button
           color="primary"
-          (click)="editarProfesorDialog(profesor)">Editar</button>
-
+          (click)="editarProfesorDialog(profesor)"
+          *ngIf="sesion.usuarioActivo?.esAdmin">Editar</button>
       <button mat-stroked-button
         color="warn"
-        (click)="eliminarProfesor(profesor)">Eliminar</button>
+        (click)="eliminarProfesor(profesor)"
+        *ngIf="sesion.usuarioActivo?.esAdmin">Eliminar</button>
     </td>
   </ng-container>
 

@@ -17,7 +17,7 @@ import { CursosService } from 'src/app/cursos/services/cursos.service';
 })
 export class ListarProfesorComponent implements OnInit, OnDestroy{
 
-  displayedColumns: string[] = ['id', 'nombre', 'correo', 'cursos', 'acciones'];
+  displayedColumns: string[] = ['id', 'nombre', 'correo', 'acciones'];
   dataSource!: MatTableDataSource<Profesor>;;
   profesores$!: Observable<Profesor[]>;
   sesion$!: Observable<Sesion>
@@ -35,15 +35,12 @@ export class ListarProfesorComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Profesor>();
     this.suscripcion = this.profesorService.obtenerProfesores().subscribe((profesores:Profesor[])=>{
-      console.log("profesores: ", profesores);
-      profesores.forEach(p => this.obetnerCursosProfesor(p.nombre));
       this.dataSource.data = profesores;
     });
     this.sesion$ = this.SesionService.obtenerSesion();
   }
 
   editarProfesorDialog(profesor: Profesor){
-    console.log("click en editar profesor", profesor);
     this.dialog.open(EditarProfesorComponent, {
       data: profesor
     }).afterClosed().subscribe((profesor: Profesor)=>{
@@ -56,17 +53,6 @@ export class ListarProfesorComponent implements OnInit, OnDestroy{
       alert(`${profesor.nombre} eliminado`);
       const profesores = this.dataSource.data.filter(p => p.id !== profesor.id);
       this.dataSource.data = profesores;
-    });
-  }
-
-  obetnerCursosProfesor(profesorNombre: Profesor['nombre']){
-    this.cursos$ = this.cursoService.obtenerCursos();
-    this.cursos$.subscribe((cursos: Curso[]) =>{
-      const cursosP = cursos.filter(c => c.profesor.nombre === profesorNombre);
-      // console.log("cursosP: ", cursosP);
-      // this.cursoService.editarCurso()
-      // this.cursosProfesor = cursosP;
-      // console.log("cursosProfesor: ", this.cursosProfesor);
     });
   }
 

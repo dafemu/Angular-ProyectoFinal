@@ -6,6 +6,7 @@ import { EditarCursoComponent } from '../editar-curso/editar-curso.component';
 import { Observable } from 'rxjs';
 import { Sesion } from 'src/app/core/models/sesion';
 import { SesionService } from 'src/app/core/services/sesion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-cursos',
@@ -22,6 +23,7 @@ export class ListarCursosComponent {
     private cursosService: CursosService,
     private dialog: MatDialog,
     private sesion: SesionService,
+    private router: Router,
   ){}
 
   ngOnInit(): void {
@@ -43,5 +45,9 @@ export class ListarCursosComponent {
       alert(`${curso.nombre} eliminado`);
       this.cursos$ = this.cursosService.obtenerCursos();
     });
+  }
+
+  redirigirAgregarCurso(){
+    this.router.navigate(['/cursos/agregar']);
   }
 }

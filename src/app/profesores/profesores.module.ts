@@ -5,6 +5,7 @@ import { EditarProfesorComponent } from './components/editar-profesor/editar-pro
 import { ListarProfesorComponent } from './components/listar-profesor/listar-profesor.component';
 import { ProfesoresRoutingModule } from './profesores-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 
 
@@ -12,7 +13,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     AgregarProfesorComponent,
     EditarProfesorComponent,
-    ListarProfesorComponent
+    ListarProfesorComponent,
+    ToolbarComponent
   ],
   imports: [
     CommonModule,
