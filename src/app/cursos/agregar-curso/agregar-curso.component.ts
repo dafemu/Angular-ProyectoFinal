@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Profesor } from 'src/app/profesores/models/profesor';
+import { CursosService } from '../services/cursos.service';
+import { ProfesorService } from 'src/app/profesores/services/profesor.service';
+import { Curso } from '../models/curso';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agregar-curso',
@@ -8,17 +14,39 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class AgregarCursoComponent implements OnInit{
   formularioAgregarCurso!: FormGroup;
+  profesores$!: Observable<Profesor[]>;
 
-  constructor(){}
+  constructor(
+    private cursoService: CursosService,
+    private profesorService: ProfesorService,
+    private router: Router,
+  ){}
 
   ngOnInit(): void {
+    this.profesores$ = this.profesorService.obtenerProfesores();
     this.formularioAgregarCurso = new FormGroup({
-      comision : new FormControl(''),
-      fechaFin: new FormControl(''),
-      fechaInicio: new FormControl(''),
+      comision : new FormControl('', [Validators.required]),
+      fechaFin: new FormControl('', [Validators.required]),
+      fechaInicio: new FormControl('', [Validators.required]),
       inscripcionAbierta: new FormControl(false),
-      nombre: new FormControl(''),
-      profesor: new FormControl({}),
+      nombre: new FormControl('', [Validators.required]),
+      profesor: new FormControl({}, [Validators.required]),
+    });
+  }
+
+  agregarCurso(){
+    let curso: Curso = {
+      id: '',
+      nombre: this.formularioAgregarCurso.value.nombre,
+      comision: this.formularioAgregarCurso.value.comision,
+      fechaInicio: this.formularioAgregarCurso.value.fechaInicio,
+      fechaFin: this.formularioAgregarCurso.value.fechaFin,
+      inscripcionAbierta: this.formularioAgregarCurso.value.inscripcionAbierta,
+      profesor: this.formularioAgregarCurso.value.profesor
+    }
+    this.cursoService.agregarCurso(curso).subscribe((curso: Curso) => {
+      alert(`${curso.nombre} agregado satisfactoriamente`);
+      this.router.navigate(['cursos/listar']);
     });
   }
 }

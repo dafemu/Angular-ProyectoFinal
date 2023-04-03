@@ -15,6 +15,7 @@ import { SesionService } from 'src/app/core/services/sesion.service';
 })
 export class ListadoAlumnosComponent implements  AfterViewInit, OnInit, OnDestroy{
   sesion$!: Observable<Sesion>
+  cargando$!: Observable<Boolean>;
 
   subscripcion!: Subscription;
 
