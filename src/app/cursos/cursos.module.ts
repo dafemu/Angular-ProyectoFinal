@@ -5,6 +5,8 @@ import { EditarCursoComponent } from './editar-curso/editar-curso.component';
 import { ListarCursosComponent } from './listar-cursos/listar-cursos.component';
 import { CursosRoutingModule } from './cursos-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { EffectsModule } from '@ngrx/effects';
+import { CursosStateEffects } from './state/cursos-state.effects';
 
 
 
@@ -17,7 +19,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     CursosRoutingModule,
-    SharedModule
+    SharedModule,
+    EffectsModule.forFeature([CursosStateEffects])
   ],
   exports: [
     AgregarCursoComponent,

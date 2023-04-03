@@ -5,6 +5,8 @@ import { AgregarAlumnoComponent } from './components/agregar-alumno/agregar-alum
 import { SharedModule } from "../shared/shared.module";
 import { AlumnosRoutingModule } from './alumnos-routing.module';
 import { EditarAlumnoComponent } from './components/editar-alumno/editar-alumno.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AlumnosStateEffects } from './state/alumnos-state.effects';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { EditarAlumnoComponent } from './components/editar-alumno/editar-alumno.
       CommonModule,
       SharedModule,
       AlumnosRoutingModule,
+      EffectsModule.forFeature([AlumnosStateEffects]),
     ]
 })
 export class AlumnosModule { }

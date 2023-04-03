@@ -6,6 +6,8 @@ import { ListarProfesorComponent } from './components/listar-profesor/listar-pro
 import { ProfesoresRoutingModule } from './profesores-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { EffectsModule } from '@ngrx/effects';
+import { ProfesoresStateEffects } from './state/profesores-state.effects';
 
 
 
@@ -19,7 +21,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
   imports: [
     CommonModule,
     ProfesoresRoutingModule,
-    SharedModule
+    SharedModule,
+    EffectsModule.forFeature([ProfesoresStateEffects])
   ]
 })
 export class ProfesoresModule { }

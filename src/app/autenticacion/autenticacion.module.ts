@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { AutenticacionRoutingModule } from './autenticacion-routing.module';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthStateEffects } from './state/auth-state.effects';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,8 @@ import { AutenticacionRoutingModule } from './autenticacion-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    AutenticacionRoutingModule
+    AutenticacionRoutingModule,
+    EffectsModule.forFeature([AuthStateEffects])
   ],
   // exports: [
   //   LoginComponent,
