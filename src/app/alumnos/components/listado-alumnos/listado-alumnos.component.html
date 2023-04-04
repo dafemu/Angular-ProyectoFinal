@@ -3,9 +3,9 @@
       <mat-spinner></mat-spinner>
   </div>
 </div>
+
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
-
     <!-- Identificacion Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef appSizeLetras> ID </th>
@@ -66,6 +66,7 @@
 <hr>
 <ng-container *ngIf="sesion$ | async as sesion">
   <div *ngIf="sesion.usuarioActivo?.esAdmin">
-    <app-agregar-alumno (onNuevoAlumno)="recibirNuevoAlumno($event)"></app-agregar-alumno>
+    <!-- <app-agregar-alumno (onNuevoAlumno)="recibirNuevoAlumno($event)"></app-agregar-alumno> -->
+    <app-agregar-alumno></app-agregar-alumno>
   </div>
 </ng-container>

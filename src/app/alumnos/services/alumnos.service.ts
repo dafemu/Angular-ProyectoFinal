@@ -9,13 +9,6 @@ import { env } from 'src/environment/environment';
 })
 export class AlumnosService {
   private alumnos : Alumno[] = [];
-  // private alumnos : Alumno[] = [
-    // { "id": '12345', "nombre": 'David', "apellido": 'uno', 'edad': 19, "curso": 'Angular', "activo": true },
-    // { "id": '23456', "nombre": "Danny", "apellido": 'dos', "edad": 20, "curso": 'React', "activo": true },
-    // { "id": '34567', "nombre": "Camila", "apellido": 'tres', "edad": 18, "curso": 'Vue', "activo": true },
-    // { "id": '45678', "nombre": "Jiss", "apellido": 'cuatro', "edad": 18, "curso": 'Nodejs', "activo": true }
-  // ];
-
   private alumnos$: BehaviorSubject<Alumno[]>;
 
   constructor(private http: HttpClient) {

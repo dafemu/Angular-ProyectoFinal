@@ -37,7 +37,6 @@ export class ListarCursosComponent {
     this.store.dispatch(cargarCursosStates());
 
     this.cursos$ = this.store.select(selectorCursosCargados);
-    // this.cursos$ = this.cursosService.obtenerCursos();
     this.sesion$ = this.sesion.obtenerSesion();
   }
 
@@ -45,19 +44,12 @@ export class ListarCursosComponent {
     this.dialog.open(EditarCursoComponent, {
       data: curso
     }).afterClosed().subscribe((curso: Curso) => {
-      alert(`${curso.nombre} editado satisfactoriamente`);
-      // this.cursos$ = this.cursosService.obtenerCursos();
-      // this.cursos$ = this.store.select(selectorCursosCargados);
+      // alert(`${curso.nombre} editado satisfactoriamente`);
     });
   }
 
   eliminarCurso(curso: Curso){
     this.store.dispatch(eliminarCursoState({curso}));
-    // this.cursosService.eliminarCurso(curso).subscribe((curso: Curso) => {
-    //   alert(`${curso.nombre} eliminado`);
-    //   // this.cursos$ = this.cursosService.obtenerCursos();
-    //   this.cursos$ = this.store.select(selectorCursosCargados);
-    // });
   }
 
   redirigirAgregarCurso(){

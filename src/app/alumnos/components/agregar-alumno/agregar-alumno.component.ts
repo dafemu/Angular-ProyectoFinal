@@ -5,6 +5,10 @@ import { AlumnosService } from '../../services/alumnos.service';
 import { Observable } from 'rxjs';
 import { Curso } from 'src/app/cursos/models/curso';
 import { CursosService } from 'src/app/cursos/services/cursos.service';
+import { AlumnosState } from '../../state/alumnos-state.reducer';
+import { Store } from '@ngrx/store';
+import { agregarAlumnoState } from '../../state/alumnos-state.actions';
+import { cargarCursosStates } from 'src/app/cursos/state/cursos-state.actions';
 
 @Component({
   selector: 'app-agregar-alumno',
@@ -20,6 +24,7 @@ export class AgregarAlumnoComponent implements OnInit{
   constructor(
     private alumnosService:AlumnosService,
     private cursosService: CursosService,
+    private store: Store<AlumnosState>,
   ){
     let soloNumerosRegex:string = '^[1-9]+$';
     let controles: any = {
@@ -34,6 +39,7 @@ export class AgregarAlumnoComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.store.dispatch(cargarCursosStates());
     this.cursos$ = this.cursosService.obtenerCursos();
   }
 
@@ -43,11 +49,8 @@ export class AgregarAlumnoComponent implements OnInit{
 
   agregarAlumno(){
     if(this.formAgregarAlumno.status === "VALID"){
-      this.alumnosService.agregarAlumno(this.formAgregarAlumno.value).subscribe((alumno:Alumno)=>{
-        this.onNuevoAlumno.emit(alumno);
-        alert(`${alumno.nombre} agregado satisfactoriamente`);
-        this.formAgregarAlumno.reset();
-      });
+      this.store.dispatch(agregarAlumnoState({alumno: this.formAgregarAlumno.value}));
+      this.formAgregarAlumno.reset();
     }
   }
 }

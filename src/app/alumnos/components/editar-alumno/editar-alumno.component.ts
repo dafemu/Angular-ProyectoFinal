@@ -3,6 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlumnosService } from '../../services/alumnos.service';
 import { Alumno } from '../../interfaces/alumno';
+import { AlumnosState } from '../../state/alumnos-state.reducer';
+import { Store } from '@ngrx/store';
+import { editarAlumnoState } from '../../state/alumnos-state.actions';
 
 @Component({
   selector: 'app-editar-alumno',
@@ -16,7 +19,9 @@ export class EditarAlumnoComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private alumnosService: AlumnosService){ }
+    private alumnosService: AlumnosService,
+    private store: Store<AlumnosState>,
+  ){ }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
@@ -41,9 +46,11 @@ export class EditarAlumnoComponent implements OnInit {
       activo: this.formularioEditarAlumno.value.activo,
     };
 
-    this.alumnosService.editarAlumno(alumno).subscribe((alumno:Alumno) => {
-      this.router.navigate(['alumnos/listar']);
-    });
+    this.store.dispatch(editarAlumnoState({alumno}));
+
+    // this.alumnosService.editarAlumno(alumno).subscribe((alumno:Alumno) => {
+    //   this.router.navigate(['alumnos/listar']);
+    // });
   }
 
 }

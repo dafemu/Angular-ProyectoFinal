@@ -7,6 +7,9 @@ import { Profesor } from 'src/app/profesores/models/profesor';
 import { Curso } from '../models/curso';
 import { CursosService } from '../services/cursos.service';
 import { ProfesorService } from '../../profesores/services/profesor.service';
+import { Store } from '@ngrx/store';
+import { CursoState } from '../state/cursos-state.reducer';
+import { editarCursoState } from '../state/cursos-state.actions';
 
 @Component({
   selector: 'app-editar-curso',
@@ -20,6 +23,7 @@ export class EditarCursoComponent implements OnInit{
   constructor(
     private cursoService: CursosService,
     private profesorService: ProfesorService,
+    private store: Store<CursoState>,
     private dialogRef: MatDialogRef<EditarCursoComponent>,
     @Inject(MAT_DIALOG_DATA) public curso: Curso
   ){}
@@ -46,10 +50,8 @@ export class EditarCursoComponent implements OnInit{
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
       profesor: this.formulario.value.profesor
     };
-
-    this.cursoService.editarCurso(curso).subscribe((curso: Curso) => {
-      this.dialogRef.close(curso);
-    });
+    this.store.dispatch(editarCursoState({curso}));
+    this.dialogRef.close(curso);
   }
 
 }

@@ -7,6 +7,8 @@ import { AlumnosRoutingModule } from './alumnos-routing.module';
 import { EditarAlumnoComponent } from './components/editar-alumno/editar-alumno.component';
 import { EffectsModule } from '@ngrx/effects';
 import { AlumnosStateEffects } from './state/alumnos-state.effects';
+import { StoreModule } from '@ngrx/store';
+import { alumnosStateFeatureKey, reducer } from './state/alumnos-state.reducer';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { AlumnosStateEffects } from './state/alumnos-state.effects';
       CommonModule,
       SharedModule,
       AlumnosRoutingModule,
+      StoreModule.forFeature(alumnosStateFeatureKey, reducer),
       EffectsModule.forFeature([AlumnosStateEffects]),
     ]
 })

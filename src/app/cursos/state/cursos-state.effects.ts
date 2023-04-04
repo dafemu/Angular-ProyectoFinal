@@ -6,16 +6,15 @@ import * as CursosStateActions from './cursos-state.actions';
 import { CursosService } from '../services/cursos.service';
 import { Router } from '@angular/router';
 import { Curso } from '../models/curso';
-import { agregarCursoState, cargarCursosStates, cursosCargados, editarCursoState, eliminarCursoState } from './cursos-state.actions';
 @Injectable()
 export class CursosStateEffects {
 
   cargarCursosStates$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(cargarCursosStates),
+      ofType(CursosStateActions.cargarCursosStates),
       concatMap(() => {
         return this.cursosService.obtenerCursos().pipe(
-          map((c: Curso[]) => cursosCargados({ cursos: c }))
+          map((c: Curso[]) => CursosStateActions.cursosCargados({ cursos: c }))
         )
       })
     );
@@ -23,12 +22,13 @@ export class CursosStateEffects {
 
   agregarCursoState$ = createEffect(()=>{
     return this.actions$.pipe(
-      ofType(agregarCursoState),
+      ofType(CursosStateActions.agregarCursoState),
       concatMap(({curso})=>{
         return this.cursosService.agregarCurso(curso).pipe(
           map((curso: Curso)=>{
+            alert(`${curso.nombre} agregado satisfactoriamente`);
             this.router.navigate(['cursos/listar']);
-            return cargarCursosStates();
+            return CursosStateActions.cargarCursosStates();
           })
         )
       }),
@@ -37,11 +37,12 @@ export class CursosStateEffects {
 
   editarCursoState$ = createEffect(()=>{
     return this.actions$.pipe(
-      ofType(editarCursoState),
+      ofType(CursosStateActions.editarCursoState),
       concatMap(({curso})=>{
         return this.cursosService.editarCurso(curso).pipe(
           map((curso: Curso)=>{
-            return cargarCursosStates();
+            alert(`${curso.nombre} editado satisfactoriamente`);
+            return CursosStateActions.cargarCursosStates();
           })
         );
       })
@@ -50,11 +51,12 @@ export class CursosStateEffects {
 
   eliminarCursoState$ = createEffect(()=>{
     return this.actions$.pipe(
-      ofType(eliminarCursoState),
+      ofType(CursosStateActions.eliminarCursoState),
       concatMap(({curso})=>{
         return this.cursosService.eliminarCurso(curso).pipe(
           map((curso: Curso)=>{
-            return cargarCursosStates();
+            alert(`${curso.nombre} eliminado`);
+            return CursosStateActions.cargarCursosStates();
           })
         );
       })
