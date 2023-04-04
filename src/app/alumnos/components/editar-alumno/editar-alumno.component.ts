@@ -47,10 +47,6 @@ export class EditarAlumnoComponent implements OnInit {
     };
 
     this.store.dispatch(editarAlumnoState({alumno}));
-
-    // this.alumnosService.editarAlumno(alumno).subscribe((alumno:Alumno) => {
-    //   this.router.navigate(['alumnos/listar']);
-    // });
   }
 
 }
